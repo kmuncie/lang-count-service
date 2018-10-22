@@ -10,9 +10,9 @@ provider:
    runtime: nodejs8.10
 
 functions:
-   lang-count:
-      handler: handler.lang-count
+   langCount:
+      handler: handler.langCount
       events:
          - http:
              method: get
-             path: lang-count
+             path: langCount
