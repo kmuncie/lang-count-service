@@ -9,8 +9,6 @@ export const langCount: Handler = (event: APIGatewayEvent, context: Context, cb:
          titleText: 'Amazon Developer Blog, week in review May 23rd',
          mainText: 'Meet Echosim. A new online community tool for developers that simulates the look and feel of an Amazon Echo.',
          redirectionUrl: 'https://developer.amazon.com/public/community/blog',
-         message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
-         input: event,
       }),
    };
 
