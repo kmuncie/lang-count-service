@@ -1,5 +1,7 @@
 import { APIGatewayEvent, Callback, Context, Handler } from 'aws-lambda';
 
+var fetch = require('node-fetch');
+
 export const langCount: Handler = (event: APIGatewayEvent, context: Context, cb: Callback) => {
 
    const now = new Date().toISOString();
@@ -12,16 +14,25 @@ export const langCount: Handler = (event: APIGatewayEvent, context: Context, cb:
       });
    }
 
-   const response = {
-      statusCode: 200,
-      body: JSON.stringify({
-         uid: uuidv4(),
-         updateDate: now,
-         titleText: 'Number of languages currently supported on JW.ORG',
-         mainText: 'Today JW dot org supports ' + '983' + ' langauges.',
-         redirectionUrl: 'https://jw.org/',
-      }),
-   };
+   fetch('https://www.jw.org/languages/')
+   .then(function(res) {
+      return res.json();
+   })
+   .then(function(json) {
 
-   cb(null, response);
+      const response = {
+         statusCode: 200,
+         body: JSON.stringify({
+            uid: uuidv4(),
+            updateDate: now,
+            titleText: 'Number of languages currently supported on JW.ORG',
+            mainText: 'Today JW dot org supports ' + json.localizedCount + ' langauges.',
+            redirectionUrl: 'https://jw.org/',
+         }),
+      };
+
+      cb(null, response);
+
+   });
+
 }
