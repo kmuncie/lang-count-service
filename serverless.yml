@@ -13,6 +13,7 @@ provider:
 functions:
    langCount:
       handler: handler.langCount
+      memorySize: 256
       events:
          - http:
              method: get
