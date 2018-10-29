@@ -23,8 +23,8 @@ export const langCount: Handler = (event: APIGatewayEvent, context: Context, cb:
          body: JSON.stringify({
             uid: uuidv4(),
             updateDate: now,
-            titleText: 'Number of languages currently supported on JW.ORG',
-            mainText: 'Today JW dot org supports ' + json.localizedCount + ' languages.',
+            titleText: 'Number of languages currently supported on JW.ORG - ' + json.localizedCount,
+            mainText: 'Today, JW dot org supports ' + json.localizedCount + ' languages.',
             redirectionUrl: 'https://jw.org/',
          }),
       };
